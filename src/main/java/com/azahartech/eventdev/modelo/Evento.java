@@ -38,41 +38,62 @@ public abstract class Evento {
 
     }
 
-    // CONSULTAS
+    // Getters
 
-    public String consultarNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-
-    public LocalDate consultarFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public double consultarPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public Recinto consultarRecinto() {
+    public Recinto getRecinto() {
         return recinto;
     }
 
-    public String consultarId() {
+    public String getId() {
         return id;
     }
 
-    public EstadoEvento consultarEstado() {
+    public EstadoEvento getEstado() {
         return estado;
     }
 
-    // Setters
-
-    public void modificarPrecio(double nuevoPrecio) {
-        this.precio = nuevoPrecio;
+    public TipoEvento getTipo() {
+        return tipo;
     }
 
-    public void modificarEstado(String nuevoEstado) {
-        estado = EstadoEvento.PLANIFICADO;
+
+    // Setters
+
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    public void setRecinto(Recinto recinto) {
+        this.recinto = recinto;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public void setEstado(EstadoEvento estado) {
+        this.estado = estado;
+    }
+
+    public void setTipo(TipoEvento tipo) {
+        this.tipo = tipo;
     }
 
     public final double calcularPrecioVentaRecomendado() {
