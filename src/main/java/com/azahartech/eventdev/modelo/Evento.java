@@ -19,20 +19,23 @@ public abstract class Evento {
     private Recinto recinto;
     private double precio;
     private String id;
-    private String estado;
+    private EstadoEvento estado;
+    private TipoEvento tipo;
 
     // Metodo
     /**
      * Constructor para crear un nuevo evento.
      * Inicializa los atributos básicos comunes a todos los tipos de eventos.
-     * El estado se establece por defecto como "PROGRAMADO".
+     * El estado se establece por defecto como "PLANIFICADO".
      */
-    public Evento(String nombre, LocalDate fecha, Recinto recinto, double precio) {
+    public Evento(String nombre, LocalDate fecha, Recinto recinto, double precio, TipoEvento nuevoTipo) {
         this.nombre = nombre;
         this.fecha = fecha;
         this.recinto = recinto;
         this.precio = precio;
-        this.estado = "PROGRAMADO";
+        estado = EstadoEvento.PLANIFICADO;
+        tipo = nuevoTipo;
+
     }
 
     // CONSULTAS
@@ -40,6 +43,7 @@ public abstract class Evento {
     public String consultarNombre() {
         return nombre;
     }
+
 
     public LocalDate consultarFecha() {
         return fecha;
@@ -57,7 +61,7 @@ public abstract class Evento {
         return id;
     }
 
-    public String consultarEstado() {
+    public EstadoEvento consultarEstado() {
         return estado;
     }
 
@@ -68,7 +72,7 @@ public abstract class Evento {
     }
 
     public void modificarEstado(String nuevoEstado) {
-        this.estado = nuevoEstado;
+        estado = EstadoEvento.PLANIFICADO;
     }
 
     public final double calcularPrecioVentaRecomendado() {
@@ -77,5 +81,8 @@ public abstract class Evento {
 
     public abstract double calcularCosteOperativo();
 
+    public void mostrarInformacion(){
+        System.out.printf("---EVENTO---%nEl evento %s se realizará el dia %s en %s%n---%n", nombre, fecha, recinto.getNombre());
+    }
 }
 
