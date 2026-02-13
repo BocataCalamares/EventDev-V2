@@ -90,7 +90,7 @@ public class App {
         double precio;
         LocalDate fecha;
         TipoEvento tipo;
-        int aforoMaximo;
+        int aforoMaximo = 0;
 
 
         System.out.print("Introduce el nombre del evento:");
@@ -116,11 +116,17 @@ public class App {
         do {
             continuidad = true;
 
-            System.out.print("Introduce el aforo maximo del recinto:");
-            aforoMaximo = SCANNER.nextInt();
-            SCANNER.nextLine();
+            try {
+                System.out.print("Introduce el aforo maximo del recinto:");
+                aforoMaximo = SCANNER.nextInt();
+                SCANNER.nextLine();
 
-            if (aforoMaximo <= 0){
+                if (aforoMaximo <= 0){
+                    continuidad = false;
+                    System.out.println("Error: El aforo maximo tiene que ser mayor o igual a 0.");
+                }
+            } catch (RuntimeException e) {
+                System.out.println("Error: El valor introducido tiene que ser digitos.");
                 continuidad = false;
             }
         }while (!continuidad);
@@ -129,12 +135,17 @@ public class App {
 
         do {
             continuidad = true;
+            try {
+                System.out.print("Introduce el precio del evento:");
+                precio = SCANNER.nextInt();
+                SCANNER.nextLine();
 
-            System.out.print("Introduce el precio del evento:");
-            precio = SCANNER.nextInt();
-            SCANNER.nextLine();
-
-            if (precio <= 0){
+                if (precio <= 0){
+                    System.out.println("Error: El valor introducido tiene que ser digitos.");
+                    continuidad = false;
+                }
+            } catch (RuntimeException e) {
+                System.out.println("Error: El valor introducido tiene que ser digitos.");
                 continuidad = false;
             }
         }while (!continuidad);
