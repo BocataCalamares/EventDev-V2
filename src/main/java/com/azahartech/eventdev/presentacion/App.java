@@ -258,7 +258,7 @@ public class App {
             }
 
             System.out.println("Se ha creado el evento");
-            SERVICIO_EVENTO.agregarEvento(evento);
+            SERVICIO_EVENTO.registrarEvento(evento);
 
             System.out.print("Quieres crear otro evento:");
             otroEvento = SCANNER.nextLine().equalsIgnoreCase("si");
@@ -266,18 +266,35 @@ public class App {
     }
 
     private static void controlEstados(){
-
+        Evento evento = SERVICIO_EVENTO.listarTodosLosEventos().get(0);
     }
 
     private static void pasarelaPagos(){
-
+        Usuario usuario = SERVICIO_USUARIO.listarTodosLosUsuario().get(0);
     }
 
     private static void consultasYStreams(){
-
+        System.out.println("> Búsqueda instantánea (ID: EVT-2026-DEFAU): " + SERVICIO_EVENTO.buscarEventoPorId("EVT-2026-DEFAU"));
+        System.out.println("> Catálogo completo ordenado:");
+        SERVICIO_EVENTO.mostrarTodoElCatalogo();
     }
 
     private static void exportacionPolimorfica(){
+        for (Evento evento : SERVICIO_EVENTO.listarTodosLosEventos()) {
+            System.out.println("----------------------------------------------------");
+            System.out.println("EXPORTANDO XML: ");
+            System.out.println(evento.aXML());
+            System.out.println("EXPORTANDO CSV: ");
+            System.out.println(evento.aCSV());
+        }
+
+        for (Usuario usuario : SERVICIO_USUARIO.listarTodosLosUsuario()) {
+            System.out.println("----------------------------------------------------");
+            System.out.println("EXPORTANDO XML: ");
+            System.out.println(usuario.aXML());
+            System.out.println("EXPORTANDO CSV: ");
+            System.out.println(usuario.aCSV());
+        }
 
     }
 
