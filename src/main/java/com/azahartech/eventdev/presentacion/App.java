@@ -21,7 +21,7 @@ public class App {
                            """);
 
         System.out.println("[FASE 1: REGISTRO DE USUARIOS]");
-        //registrarUsuarios();
+        registrarUsuarios();
 
         System.out.println("[FASE 2: REGISTRO DE EVENTOS]");
         registrarEventos();
@@ -299,6 +299,10 @@ public class App {
     }
 
     private static void cierreEspecificoEventos(){
-
+        for (Evento evento : SERVICIO_EVENTO.listarTodosLosEventos()) {
+            System.out.println("Cerrando Evento: " + evento.getNombre());
+            evento.finalizarEvento();
+            System.out.println("[OK] Evento finalizado con éxito.");
+        }
     }
 }
