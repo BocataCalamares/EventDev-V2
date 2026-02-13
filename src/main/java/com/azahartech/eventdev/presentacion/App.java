@@ -1,7 +1,7 @@
 package com.azahartech.eventdev.presentacion;
 
 import com.azahartech.eventdev.modelo.*;
-import com.azahartech.eventdev.servicio.ServicioUsuario;
+import com.azahartech.eventdev.servicio.*;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class App {
     private final static Scanner SCANNER = new Scanner(System.in);
     private final static ServicioUsuario SERVICIO_USUARIO = new ServicioUsuario();
-    //private final static ServicioEvento SERVICIO_EVENTO = new ServicioEvento();
+    private final static ServicioEvento SERVICIO_EVENTO = new ServicioEvento();
 
     private static boolean continuidad = true;
 
@@ -85,7 +85,7 @@ public class App {
     private static void registrarEventos(){
         boolean otroEvento;
         do {
-            Evento evento;
+            Evento evento = null;
             Recinto recinto;
 
             String nombre, nombreRecinto, direccionRecinto;
@@ -256,6 +256,9 @@ public class App {
                     System.out.println("PROXIMAMENTE");
                     break;
             }
+
+            System.out.println("Se ha creado el evento");
+            SERVICIO_EVENTO.agregarEvento(evento);
 
             System.out.print("Quieres crear otro evento:");
             otroEvento = SCANNER.nextLine().equalsIgnoreCase("si");
