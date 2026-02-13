@@ -127,6 +127,7 @@ public class App {
                     System.out.println("Error: El valor tiene que ser mayor o igual a 0.");
                 }
             } catch (RuntimeException e) {
+                SCANNER.nextLine();
                 System.out.println("Error: El valor introducido tiene que ser digitos.");
                 continuidad = false;
             }
@@ -146,25 +147,40 @@ public class App {
                     continuidad = false;
                 }
             } catch (RuntimeException e) {
+                SCANNER.nextLine();
                 System.out.println("Error: El valor introducido tiene que ser digitos.");
                 continuidad = false;
             }
         }while (!continuidad);
 
         do {
-            opcion = -1;
-            System.out.println("Dime el tipo de evento que es: ");
-            System.out.println("""
-                    1. CONCIERTO
-                    2. TEATRO
-                    3. DEPORTE
-                    4. FESTIVAL
-                    """);
-            System.out.print("Dime una opcion:");
-            if (opcion < 1 && opcion > 4){
-                System.out.println("Error: La opcion es invalida");
+            try {
+                opcion = -1;
+                System.out.println("Dime el tipo de evento que es: ");
+                System.out.println("""
+                        1. CONCIERTO
+                        2. TEATRO
+                        3. DEPORTE
+                        4. FESTIVAL
+                        """);
+                System.out.print("Dime una opcion:");
+                opcion = SCANNER.nextInt();
+                SCANNER.nextLine();
+
+                if (opcion < 1 && opcion > 4) {
+                    System.out.println("Error: La opcion es invalida");
+                    continuidad = false;
+                }
+            } catch (RuntimeException e) {
+                SCANNER.nextLine();
+
+                System.out.println("Error: El valor introducido tiene que ser digitos.");
+
+                opcion = -1;
+
+                continuidad = false;
             }
-        } while (opcion < 1 && opcion > 4);
+        } while (!continuidad);
 
         switch (opcion){
             case 1:
@@ -188,6 +204,7 @@ public class App {
                             continuidad = false;
                         }
                     } catch (RuntimeException e) {
+                        SCANNER.nextLine();
                         System.out.println("Error: El valor introducido tiene que ser digitos.");
                         continuidad = false;
                     }
@@ -216,14 +233,15 @@ public class App {
                     continuidad = true;
                     try {
                         System.out.print("Introduce el coste  del evento:");
-                        costeMontaje = SCANNER.nextDouble();
+                        costeSeguridad = SCANNER.nextDouble();
                         SCANNER.nextLine();
 
-                        if (costeMontaje <= 0){
+                        if (costeSeguridad <= 0){
                             System.out.println("Error: El valor tiene que ser mayor o igual a 0.");
                             continuidad = false;
                         }
                     } catch (RuntimeException e) {
+                        SCANNER.nextLine();
                         System.out.println("Error: El valor introducido tiene que ser digitos.");
                         continuidad = false;
                     }
