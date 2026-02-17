@@ -320,7 +320,7 @@ public class App {
 
         System.out.printf("> Precio de venta sugerido : %.2f EUR\n", evento.getPrecio());
 
-        System.out.printf("> Eventos antes de limpiar: %d\n", SERVICIO_EVENTO.listarTodosLosEventos().size());
+        System.out.printf("> Eventos antes de limpieza: %d\n", SERVICIO_EVENTO.listarTodosLosEventos().size());
 
         SERVICIO_EVENTO.eliminarEventosPasados();
 
