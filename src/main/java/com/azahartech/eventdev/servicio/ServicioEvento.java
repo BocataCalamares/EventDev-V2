@@ -65,7 +65,7 @@ public class ServicioEvento {
             Evento e = iterador.next();
             if (e.getFecha().isBefore(LocalDate.now())) {
                 mapaEventos.remove(e.getId());
-                System.out.println("Evento caducado eliminado"+ e.getNombre());
+                System.out.println("Evento caducado eliminado: "+ e.getNombre());
                 iterador.remove();
             }
         }
