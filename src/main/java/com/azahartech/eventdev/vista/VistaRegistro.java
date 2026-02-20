@@ -44,7 +44,7 @@ public class VistaRegistro extends JFrame {
         principal.add(pnlRegistro, BorderLayout.CENTER);
 
         //ZONA NORTE
-        JLabel titulo = new JLabel("REGISTRIO :D");
+        JLabel titulo = new JLabel("REGISTRO :D");
         titulo.setFont(new Font("Arial", Font.BOLD, 18));
         titulo.setHorizontalAlignment(SwingConstants.CENTER);
         principal.add(titulo, BorderLayout.NORTH);
