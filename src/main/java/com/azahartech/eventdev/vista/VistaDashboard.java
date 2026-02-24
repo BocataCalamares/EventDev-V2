@@ -31,6 +31,9 @@ public class VistaDashboard extends JFrame {
             JButton entradasButton = new JButton("Mis Entradas");
             JButton perfilButton = new JButton("Perfil");
             JButton salirButton = new JButton("Salir");
+            salirButton.addActionListener(e -> {
+                dispose();
+            });
 
             barraLateral.add(catalogoButton);
             barraLateral.add(entradasButton);
@@ -52,9 +55,26 @@ public class VistaDashboard extends JFrame {
             dashboard.add(barraEstadoPanel, BorderLayout.SOUTH);
 
             //ZONA CENTRAL
-            JPanel centroPanel = new JPanel();
-            centroPanel.setBackground(Color.WHITE);
-            dashboard.add(centroPanel, BorderLayout.CENTER);
+            //JPanel centroPanel = new JPanel();
+            //centroPanel.setBackground(Color.WHITE);
+            //dashboard.add(centroPanel, BorderLayout.CENTER);
+
+            GridLayout gridLayout = new GridLayout(0, 1);
+            gridLayout.setVgap(10);
+            JPanel pnlLista = new JPanel(gridLayout);
+
+            for (int i = 0; i < 15; i++) {
+                TarjetaEvento tarjetaPrueba = new TarjetaEvento("Evento 1", "12/10/2026", "20");
+                tarjetaPrueba.setBorder(BorderFactory.createCompoundBorder(tarjetaPrueba.getBorder(),BorderFactory.createEmptyBorder(18,10,10,10)));
+                pnlLista.add(tarjetaPrueba);
+            }
+
+            JScrollPane scroll = new JScrollPane(pnlLista);
+            scroll.getVerticalScrollBar().setUnitIncrement(16);
+            dashboard.add(scroll, BorderLayout.CENTER);
+
+
+
         }
 
 }
